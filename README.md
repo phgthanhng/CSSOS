@@ -1,6 +1,6 @@
 # CSSOS
 
-<h1> CSSOS (Computer Science Student Operating System)</h>
+CSSOS (Computer Science Student Operating System)
 
 Author : Phuong Thanh Nguyen Xiao Chen
 
