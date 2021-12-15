@@ -42,7 +42,7 @@ Create a virtual hard disk (.vdi) for later installation convenience.
 
 After the operating system is created, add the live image (.iso file) to the controller. 
 
-![image-20211215011754626](C:\Users\xrosa\AppData\Roaming\Typora\typora-user-images\image-20211215011754626.png) 
+![image](https://user-images.githubusercontent.com/55856076/146137469-1f50aaf7-3a0e-4800-985c-ff6640b9676e.png)
 
 (the optical drive will be removed after the installation)
 
