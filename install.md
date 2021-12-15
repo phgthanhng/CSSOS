@@ -20,8 +20,6 @@ After the installation process is over and the application is installed, open it
 
 ![image-20211215011257772](C:\Users\xrosa\AppData\Roaming\Typora\typora-user-images\image-20211215011257772.png)
 
-
-
 Follow the instruction and give your own name and customization on the memory size and storage size. 
 
 ![image-20211215011428775](C:\Users\xrosa\AppData\Roaming\Typora\typora-user-images\image-20211215011428775.png)
