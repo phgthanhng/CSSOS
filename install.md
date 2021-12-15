@@ -58,11 +58,11 @@ Select start installer from the login page:
 
 
 
-![image-20211215012430746](C:\Users\xrosa\AppData\Roaming\Typora\typora-user-images\image-20211215012430746.png) 
+![image](https://user-images.githubusercontent.com/55856076/146137542-838fe03d-7be0-4493-8e2f-b556afaef01e.png)
 
 The calamaris installer has an appealing user interface where the instructions are easy to follow. There is no need to worry about overwriting the disk as the installation is made in virtual disk. So it our case, it is safe to select "overwrite the complete disk" during disk partitioning process. 
 
-![image-20211215012804844](C:\Users\xrosa\AppData\Roaming\Typora\typora-user-images\image-20211215012804844.png) 
+![image](https://user-images.githubusercontent.com/55856076/146137566-b25066d4-ab4b-4e40-b41e-f53064f037a5.png)
 
 Once the installation process is over, the system is ready to use. 
 
