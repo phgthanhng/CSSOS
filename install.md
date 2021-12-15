@@ -12,29 +12,31 @@ Select the host package on your need.
 
 the executable file is downloaded, follow the setup Wizard and install it on a location that is recognizable. 
 
-The installation process is easy.
+The installation process is easy to follow.
 
 
 
 After the installation process is over and the application is installed, open it and create a new operating system. 
+![image](https://user-images.githubusercontent.com/55856076/146137189-3f65d5a5-1b46-4824-a71e-0639a5fc11e2.png)
 
-![image-20211215011257772](C:\Users\xrosa\AppData\Roaming\Typora\typora-user-images\image-20211215011257772.png)
 
 Follow the instruction and give your own name and customization on the memory size and storage size. 
 
-![image-20211215011428775](C:\Users\xrosa\AppData\Roaming\Typora\typora-user-images\image-20211215011428775.png)
+![image](https://user-images.githubusercontent.com/55856076/146137253-92aaf0f0-829b-4197-b1d0-0887d758d9aa.png)
+
 
 It is preferable to choose more than 2GB for the memory size to run the application smoothly. 
 
-![image-20211215011549552](C:\Users\xrosa\AppData\Roaming\Typora\typora-user-images\image-20211215011549552.png)
+![image](https://user-images.githubusercontent.com/55856076/146137279-c613e5af-d521-452a-9d7a-e8ba00826f9b.png)
 
 
 
 Create a virtual hard disk (.vdi) for later installation convenience. 
 
-![image-20211215011715535](C:\Users\xrosa\AppData\Roaming\Typora\typora-user-images\image-20211215011715535.png) 
+![image](https://user-images.githubusercontent.com/55856076/146137315-04715cc6-cd2c-44f3-90c1-21e1293240b7.png)
 
-![image-20211215011740569](C:\Users\xrosa\AppData\Roaming\Typora\typora-user-images\image-20211215011740569.png) 
+![image](https://user-images.githubusercontent.com/55856076/146137357-96b2d80a-092b-4fd4-9b81-c129f80cf5d3.png)
+
 
 
 
