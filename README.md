@@ -2,7 +2,7 @@
 
 CSSOS (Computer Science Student Operating System)
 
-Author : Phuong Thanh Nguyen Xiao Chen
+Author : Phuong Thanh Nguyen (1934520) Xiao Chen (1866815)
 
 Our final Project is to solve the case scenario where computer science students build their own customize operating system based on their needs. 
 
