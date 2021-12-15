@@ -1,0 +1,115 @@
+Step by Step Live-Build - AMD64 Architecture Example
+
+-----------------------------------
+
+Suggested location for the build staging folder:
+
+  /cssOS -- build folder
+
+Suggested location for the collection of preparation files and packages:
+
+  /prep  -- files location
+
+
+The build procedure begins below. Copy and paste each command exactly unless you know what you are doing and are comfortable making changes.
+ALL COMMANDS NEED TO BE RUN AS ROOT! (MUST USE su -l)
+If you use Virtual Box to build the system, there will be error arise saying the target device is busy --> cant umount $PATH
+--> run command below to umount the busy device:
+umount -l /PATH/OF/BUSY-DEVICE
+then run the command line lb build again to resume the build process.
+
+----------------------------------
+
+Step 1: Assign the variable WKDIR the output of pwd
+
+# Run command below to set the working directory:
+
+WKDIR="$(pwd)"
+
+----------------------------------
+
+Step 2: Remove the icon cache cleaning hook, create the build staging folder, and cd into it
+
+# Run commands below to prepare for the build:
+
+[[ -f /usr/share/live/build/hooks/normal/0130-remove-gnome-icon-cache.hook.chroot ]] && rm /usr/share/live/build/hooks/normal/0130-remove-gnome-icon-cache.hook.chroot
+mkdir cssOS
+cd cssOS
+
+----------------------------------
+
+Step 3: Set up the live-build config
+
+# Run command below to configure live build:
+
+lb config --binary-images iso-hybrid --mode debian --architectures amd64 --linux-flavours amd64 --distribution bullseye --archive-areas "main contrib non-free" --updates true --security true --cache true --apt-recommends true --debian-installer live --debian-installer-gui true --win32-loader false --iso-application cssOS --iso-preparer eznix-https://sourceforge.net/projects/eznixos/ --iso-publisher eznix-https://sourceforge.net/projects/eznixos/ --iso-volume cssOS
+
+# If the Debian Installer does not work, try inserting 	--debian-installer-distribution daily into the lb config options
+
+----------------------------------
+
+Step 4: Pass the desktop and packages to the live-build config
+
+# Run command below to install the Xfce Desktop:
+
+echo task-xfce-desktop > $WKDIR/cssOS/config/package-lists/desktop.list.chroot
+
+# Run command below to install tons of software:
+
+echo "haveged less gdebi galculator grsync synaptic gparted bleachbit flac faad faac mjpegtools x265 x264 mpg321 ffmpeg streamripper sox mencoder dvdauthor twolame lame asunder aisleriot dosbox filezilla libxvidcore4 vlc soundconverter hplip-gui cdrdao frei0r-plugins htop jfsutils xfsprogs ntfs-3g cdtool mtools clonezilla testdisk numix-gtk-theme greybird-gtk-theme breeze-icon-theme breeze-gtk-theme xorriso cdrskin p7zip-full p7zip-rar hardinfo inxi gnome-disk-utility simplescreenrecorder thunderbird simple-scan gthumb remmina arc-theme gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-plugins-good gnome-system-tools dos2unix dialog papirus-icon-theme transmission-gtk rar unrar cifs-utils fuse3 gvfs-fuse gvfs-backends gvfs-bin pciutils squashfs-tools syslinux syslinux-common dosfstools isolinux live-build fakeroot linux-headers-amd64 lsb-release menu build-essential dkms curl wget iftop apt-transport-https dirmngr nvidia-detect openvpn network-manager-openvpn openvpn-systemd-resolved libqt5opengl5 neofetch firmware-linux firmware-linux-nonfree firmware-misc-nonfree firmware-realtek firmware-atheros firmware-bnx2 firmware-bnx2x firmware-brcm80211 firmware-ipw2x00 firmware-intelwimax firmware-iwlwifi firmware-libertas firmware-netxen firmware-zd1211 gnome-nettool guvcview dconf-cli libibus-1.0-5 gir1.2-ibus-1.0 ibus-data python3-ibus-1.0 ibus ibus-gtk ibus-gtk3 im-config libegl1-mesa libgl1-mesa-glx libxcb-xtest0" > $WKDIR/cssOS/config/package-lists/packages.list.chroot
+
+# Run command below to install EFI boot loader packages:
+
+echo "grub-common grub2-common grub-pc-bin efibootmgr grub-efi-amd64 grub-efi-amd64-bin grub-efi-amd64-signed grub-efi-ia32-bin libefiboot1 libefivar1 mokutil shim-helpers-amd64-signed shim-signed-common shim-unsigned" > $WKDIR/cssOS/config/package-lists/grubuefi.list.binary
+
+# Run command below to include Broadcom wireless drivers:
+
+echo "b43-fwcutter firmware-b43-installer firmware-b43legacy-installer" > $WKDIR/cssOS/config/package-lists/wifidrivers.list.chroot
+
+----------------------------------
+
+Step 5: Make folders in the chroot 
+
+# Run command below to create needed folders:
+
+mkdir -p $WKDIR/cssOS/config/includes.chroot/usr/share/cssOS
+mkdir -p $WKDIR/cssOS/config/includes.chroot/etc/skel/.config
+mkdir -p $WKDIR/cssOS/config/includes.chroot/usr/share/backgrounds
+mkdir -p $WKDIR/cssOS/config/includes.chroot/usr/share/icons/default
+mkdir -p $WKDIR/cssOS/config/includes.chroot/usr/local/bin
+mkdir -p $WKDIR/cssOS/config/includes.chroot/usr/share/applications
+mkdir -p $WKDIR/cssOS/config/includes.chroot/usr/share/doc/cssOS
+mkdir -p $WKDIR/cssOS/config/includes.chroot/etc/skel/Desktop
+
+-----------------------------------
+
+Step 6: Copy files into the chroot and live-build config
+
+# Run commands below to copy build files into the live system:
+
+cp -r $WKDIR/prep $WKDIR/cssOS/config/includes.chroot/usr/share/cssOS/
+cp -r $WKDIR/prep/bootloaders $WKDIR/cssOS/config/
+cp -r $WKDIR/prep/xfce4 $WKDIR/cssOS/config/includes.chroot/etc/skel/.config/
+cp $WKDIR/prep/scripts/* $WKDIR/cssOS/config/includes.chroot/usr/local/bin/
+cp $WKDIR/prep/doc/* $WKDIR/cssOS/config/includes.chroot/usr/share/doc/cssOS/
+cp $WKDIR/prep/backgrounds/* $WKDIR/cssOS/config/includes.chroot/usr/share/backgrounds/
+cp $WKDIR/prep/icons/* $WKDIR/cssOS/config/includes.chroot/usr/share/icons/default/
+cp $WKDIR/prep/launchers/ezadmin.desktop $WKDIR/cssOS/config/includes.chroot/usr/share/applications/
+ln -s /usr/share/doc/cssOS $WKDIR/cssOS/config/includes.chroot/etc/skel/Desktop/
+
+-----------------------------------
+
+Step 7: Start the build process
+
+# Run command below to start live build:
+
+lb build
+
+-----------------------------------
+
+Step 8: Wait for the build to complete. The ISO will be inside the build folder
+
+-----------------------------------
+
+# bldprep-howto.txt -- Revision: 111r1 -- by eznix + phgthanhng(https://sourceforge.net/projects/eznixos/)
+# (GNU/General Public License version 3.0)
