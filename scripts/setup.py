@@ -21,6 +21,7 @@ run_command("sudo apt -y install anki")
 run_command("sudo apt -y install software-properties-common apt-transport-https curl")
 run_command("curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -")
 run_command('sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"')
+run_command("sudo apt update")
 run_command("sudo apt install code")
 #Install Airstrike
 run_command("sudo apt -y install airstrike") 
