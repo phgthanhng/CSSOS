@@ -4,7 +4,7 @@ CSSOS (Computer Science Student Operating System)
 
 Author : Phuong Thanh Nguyen (1934520) Xiao Chen (1866815)
 
-Here is the link to download the iso file: https://www.codecademy.com/catalog/language/python
+Here is the link to download the iso file: https://drive.google.com/file/d/1oP_ggFTyhsaM8BAHHwQlrNC-ThRnGwsd/view?usp=sharing
 
 Our final Project is to solve the case scenario where computer science students build their own customize operating system based on their needs. 
 
